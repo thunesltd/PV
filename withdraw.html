@@ -1,0 +1,2241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PV Africa - Withdraw</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Segoe UI",sans-serif;
+}
+
+body{
+background:linear-gradient(160deg,#060014,#24005c,#002040);
+color:#fff;
+padding:20px;
+padding-bottom:120px;
+min-height:100vh;
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+}
+
+.logo{
+font-size:28px;
+font-weight:900;
+}
+
+.logo span{
+color:#00ff88;
+}
+
+.profile{
+width:48px;
+height:48px;
+border-radius:50%;
+background:linear-gradient(135deg,#8e2de2,#4a00e0);
+display:flex;
+align-items:center;
+justify-content:center;
+text-decoration:none;
+color:white;
+-webkit-tap-highlight-color:transparent;
+}
+
+.profile:focus,
+.profile:active{
+outline:none;
+}
+
+.title{
+margin-bottom:25px;
+}
+
+.title h1{
+font-size:28px;
+margin-bottom:8px;
+}
+
+.title p{
+color:rgba(255,255,255,.7);
+}
+
+.balance{
+background:linear-gradient(135deg,#7b00ff,#005bea);
+padding:25px;
+border-radius:28px;
+margin-bottom:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.35);
+}
+
+.balance small{
+opacity:.8;
+}
+
+.balance h2{
+font-size:35px;
+margin-top:8px;
+}
+
+.balance p{
+margin-top:8px;
+opacity:.8;
+}
+
+.stats{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+margin-bottom:20px;
+}
+
+.stat{
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(15px);
+border:1px solid rgba(255,255,255,.15);
+padding:18px;
+border-radius:22px;
+}
+
+.stat i{
+font-size:22px;
+color:#00ff88;
+margin-bottom:10px;
+}
+
+.stat h3{
+font-size:22px;
+margin:6px 0;
+}
+
+.stat p{
+font-size:13px;
+color:#bbb;
+}
+
+.card{
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(18px);
+border:1px solid rgba(255,255,255,.15);
+padding:22px;
+border-radius:25px;
+margin-bottom:20px;
+}
+
+.card h2{
+margin-bottom:18px;
+font-size:20px;
+}
+
+label{
+display:block;
+margin-bottom:8px;
+font-size:14px;
+color:#ddd;
+}
+
+.input{
+width:100%;
+padding:16px;
+border:none;
+outline:none;
+border-radius:18px;
+background:rgba(255,255,255,.12);
+color:#fff;
+margin-bottom:18px;
+font-size:15px;
+}
+
+.input::placeholder{
+color:#bbb;
+}
+
+.input:disabled,
+.input[readonly]{
+opacity:.75;
+}
+
+.payment-method{
+width:100%;
+padding:13px 16px;
+border-radius:18px;
+background:rgba(255,255,255,.12);
+display:flex;
+align-items:center;
+gap:12px;
+margin-bottom:18px;
+}
+
+.payment-method img{
+width:34px;
+height:34px;
+border-radius:50%;
+object-fit:cover;
+}
+
+.note{
+display:flex;
+justify-content:space-between;
+font-size:13px;
+color:#bbb;
+margin-bottom:18px;
+}
+
+.withdraw-all{
+width:100%;
+padding:14px;
+border:none;
+border-radius:20px;
+background:rgba(255,255,255,.15);
+color:#fff;
+font-weight:bold;
+margin-bottom:15px;
+cursor:pointer;
+}
+
+.withdraw-all:active{
+transform:scale(.98);
+}
+
+.withdraw-btn{
+width:100%;
+padding:17px;
+border:none;
+border-radius:25px;
+background:#00ff88;
+color:#000;
+font-size:17px;
+font-weight:700;
+cursor:pointer;
+transition:.3s;
+}
+
+.withdraw-btn:disabled{
+opacity:.5;
+cursor:not-allowed;
+}
+
+.withdraw-btn:hover{
+transform:scale(.98);
+}
+
+.summary{
+margin-top:20px;
+background:rgba(255,255,255,.06);
+padding:18px;
+border-radius:20px;
+}
+
+.row{
+display:flex;
+justify-content:space-between;
+margin:12px 0;
+font-size:15px;
+}
+
+.receive{
+color:#00ff88;
+font-weight:bold;
+}
+
+.history-title{
+margin:25px 0 15px;
+font-size:20px;
+}
+
+.history-item{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 0;
+}
+
+.left{
+display:flex;
+align-items:center;
+gap:15px;
+min-width:0;
+}
+
+.right{
+color:#bbb;
+font-size:13px;
+white-space:nowrap;
+}
+
+.history-icon{
+width:55px;
+height:55px;
+border-radius:18px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:22px;
+flex-shrink:0;
+}
+
+.history-icon.completed{
+background:rgba(0,255,136,.15);
+color:#00ff88;
+}
+
+.history-icon.pending{
+background:rgba(255,193,7,.15);
+color:#ffc107;
+}
+
+.history-icon.rejected{
+background:rgba(255,82,82,.15);
+color:#ff5252;
+}
+
+.history-icon.processing{
+background:rgba(80,150,255,.15);
+color:#55aaff;
+}
+
+.history-item h4{
+margin-bottom:4px;
+}
+
+.history-item p{
+font-size:13px;
+color:#bbb;
+margin-bottom:4px;
+}
+
+.completed-text{
+color:#00ff88;
+}
+
+.pending-text{
+color:#ffc107;
+}
+
+.rejected-text{
+color:#ff5252;
+}
+
+.processing-text{
+color:#55aaff;
+}
+
+hr{
+border:none;
+height:1px;
+background:rgba(255,255,255,.08);
+}
+
+.empty-history{
+text-align:center;
+padding:30px 10px;
+color:#aaa;
+}
+
+.empty-history i{
+font-size:35px;
+margin-bottom:12px;
+}
+
+.bottom-nav{
+position:fixed;
+left:15px;
+right:15px;
+bottom:15px;
+height:75px;
+background:rgba(15,15,35,.94);
+backdrop-filter:blur(20px);
+border-radius:35px;
+display:flex;
+justify-content:space-around;
+align-items:center;
+border:1px solid rgba(255,255,255,.08);
+z-index:100;
+}
+
+.nav{
+text-align:center;
+font-size:12px;
+color:#aaa;
+text-decoration:none;
+-webkit-tap-highlight-color:transparent;
+}
+
+.nav i{
+display:block;
+font-size:22px;
+margin-bottom:5px;
+}
+
+.nav.active{
+color:#00ff88;
+}
+
+.nav:active{
+transform:scale(.94);
+}
+
+/* Popup */
+
+.popup-overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.7);
+backdrop-filter:blur(8px);
+display:none;
+align-items:center;
+justify-content:center;
+padding:20px;
+z-index:999;
+}
+
+.popup-overlay.show{
+display:flex;
+}
+
+.popup{
+width:100%;
+max-width:390px;
+background:#171127;
+border:1px solid rgba(255,255,255,.12);
+border-radius:28px;
+padding:28px 22px;
+text-align:center;
+box-shadow:0 20px 50px rgba(0,0,0,.5);
+animation:popupIn .25s ease;
+}
+
+@keyframes popupIn{
+from{
+transform:scale(.9);
+opacity:0;
+}
+to{
+transform:scale(1);
+opacity:1;
+}
+}
+
+.popup-icon{
+width:65px;
+height:65px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+margin:0 auto 15px;
+font-size:28px;
+}
+
+.popup.success .popup-icon{
+background:rgba(0,255,136,.15);
+color:#00ff88;
+}
+
+.popup.error .popup-icon{
+background:rgba(255,82,82,.15);
+color:#ff5252;
+}
+
+.popup.warning .popup-icon{
+background:rgba(255,193,7,.15);
+color:#ffc107;
+}
+
+.popup h3{
+font-size:21px;
+margin-bottom:10px;
+}
+
+.popup p{
+color:#bbb;
+line-height:1.5;
+font-size:14px;
+}
+
+.popup button{
+margin-top:20px;
+width:100%;
+padding:14px;
+border:0;
+border-radius:18px;
+background:#00ff88;
+font-weight:bold;
+cursor:pointer;
+}
+
+.loader{
+display:inline-block;
+width:17px;
+height:17px;
+border:2px solid rgba(0,0,0,.3);
+border-top-color:#000;
+border-radius:50%;
+animation:spin .7s linear infinite;
+vertical-align:middle;
+margin-right:7px;
+}
+
+@keyframes spin{
+to{
+transform:rotate(360deg);
+}
+}
+
+@media(max-width:380px){
+
+body{
+padding:15px;
+padding-bottom:115px;
+}
+
+.balance h2{
+font-size:30px;
+}
+
+.stats{
+gap:10px;
+}
+
+.stat{
+padding:14px;
+}
+
+.history-icon{
+width:47px;
+height:47px;
+}
+
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<div class="logo">
+PV <span>Africa</span>
+</div>
+
+<a href="about.html" class="profile">
+<i class="fa-solid fa-user"></i>
+</a>
+
+</div>
+
+
+<div class="title">
+
+<h1>Kubikuza Amafaranga</h1>
+
+<p>
+Kubikuza Amafaranga Winjije Mu buryo Bwemewe.
+</p>
+
+</div>
+
+
+<!-- BALANCE -->
+
+<div class="balance">
+
+<small>Amafaranga Ahari</small>
+
+<h2 id="balanceAmount">
+Loading...
+</h2>
+
+<p id="balanceStatus">
+Turimo Kugenzura Amafaranga Yawe
+</p>
+
+</div>
+
+
+<!-- STATS -->
+
+<div class="stats">
+
+<div class="stat">
+
+<i class="fa-solid fa-money-bill-wave"></i>
+
+<p>Amafaranga Yose Yabikuwe</p>
+
+<h3 id="totalWithdrawn">
+0 RWF
+</h3>
+
+</div>
+
+
+<div class="stat">
+
+<i class="fa-solid fa-clock"></i>
+
+<p>Amafaranga Atarakugeraho</p>
+
+<h3 id="pendingAmount">
+0 RWF
+</h3>
+
+</div>
+
+</div>
+
+
+<!-- WITHDRAWAL FORM -->
+
+<div class="card">
+
+<h2>Amakuru Yo Kubikuza</h2>
+
+
+<label>
+Amafaranga Ushaka Kubikuza
+
+
+</label>
+
+<input
+id="withdrawAmount"
+class="input"
+type="number"
+inputmode="numeric"
+min="1200"
+placeholder="Umubare W'amafaranga"
+>
+
+
+<label>
+Uburyo Bwo Kuyakira
+</label>
+
+<div class="payment-method">
+
+<img src="mtn.png" alt="MTN">
+
+<span>
+MTN Mobile Money
+</span>
+
+</div>
+
+
+<label>
+Nimero Ya Telefoni
+</label>
+
+<input
+id="phoneNumber"
+class="input"
+type="tel"
+placeholder="+250 7XX XXX XXX"
+maxlength="17"
+>
+
+
+<label>
+Amazina Abaruye Kuri Nimero Ya Telefoni
+</label>
+
+<input
+id="registeredName"
+class="input"
+type="text"
+placeholder="Andika Amazina"
+
+
+autocomplete="name"
+>
+
+<label>
+Ijambo Ry'ibanga Rya Konti
+</label>
+
+<input
+id="accountPassword"
+class="input"
+type="password"
+placeholder="Ijambo ry'ibanga"
+>
+
+
+<div class="note">
+
+<span>
+Ntarengwa: 1,200 RWF
+</span>
+
+<span>
+Akatwa: 8.75%
+</span>
+
+</div>
+
+
+<button
+id="withdrawAllBtn"
+class="withdraw-all"
+type="button">
+
+Bikuza Yose
+
+</button>
+
+
+<button
+id="withdrawBtn"
+class="withdraw-btn"
+type="button">
+
+<i class="fa-solid fa-paper-plane"></i>
+Saba Kubikuza
+
+</button>
+
+
+<div class="summary">
+
+<div class="row">
+
+<span>Umubare</span>
+
+<span id="showAmount">
+0 RWF
+</span>
+
+</div>
+
+
+<div class="row">
+
+<span>Akatwa</span>
+
+<span id="showFee">
+0 RWF
+</span>
+
+</div>
+
+
+<div class="row">
+
+<span>Ayo Uribwakire</span>
+
+<span
+id="showReceive"
+class="receive">
+
+0 RWF
+
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- HISTORY -->
+
+<h2 class="history-title">
+Ayo Uheruka Kubikuza
+</h2>
+
+
+<div class="card" id="historyContainer">
+
+<div class="empty-history">
+
+<i class="fa-solid fa-clock-rotate-left"></i>
+
+<p>
+Amakuru Y'amafaranga Wabikuje
+</p>
+
+</div>
+
+</div>
+
+
+<!-- NAVIGATION -->
+
+<div class="bottom-nav">
+
+<a href="dashboard.html" class="nav">
+
+<i class="fa-solid fa-house"></i>
+
+Ahabanza
+
+</a>
+
+
+<a href="investment.html" class="nav">
+
+<i class="fa-solid fa-chart-line"></i>
+
+Ishoramari
+
+</a>
+
+
+<a href="earn.html" class="nav">
+
+<i class="fa-solid fa-coins"></i>
+
+Imirimo
+
+</a>
+
+
+<a href="withdraw.html" class="nav active">
+
+<i class="fa-solid fa-wallet"></i>
+
+Ikofi
+
+</a>
+
+
+<a href="about.html" class="nav">
+
+<i class="fa-solid fa-circle-info"></i>
+
+Abo Turi Bo
+
+</a>
+
+</div>
+
+
+<!-- POPUP -->
+
+<div
+id="popupOverlay"
+class="popup-overlay">
+
+<div
+id="popupBox"
+class="popup success">
+
+<div
+id="popupIcon"
+class="popup-icon">
+
+<i class="fa-solid fa-check"></i>
+
+</div>
+
+<h3 id="popupTitle">
+Success
+</h3>
+
+<p id="popupMessage">
+Done.
+</p>
+
+<button
+onclick="closePopup()">
+
+OK
+
+</button>
+
+</div>
+
+</div>
+
+
+<script type="module">
+
+import {
+initializeApp
+}
+from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+
+
+import {
+getAuth,
+onAuthStateChanged,
+reauthenticateWithCredential,
+EmailAuthProvider
+}
+from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+
+import {
+getDatabase,
+ref,
+onValue,
+push,
+set,
+update,
+runTransaction
+}
+from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+
+
+/* ==========================================
+   FIREBASE CONFIG
+   USE YOUR EXISTING PV AFRICA CONFIG
+========================================== */
+
+const firebaseConfig = {
+
+apiKey:"AIzaSyBXV-MbphBrh20w-YYZgBBDuQ976XwLbq8",  
+  
+authDomain:"onafriq-5256f.firebaseapp.com",  
+  
+databaseURL:"https://onafriq-5256f-default-rtdb.firebaseio.com",  
+  
+projectId:"onafriq-5256f",  
+  
+storageBucket:"onafriq-5256f.appspot.com",  
+  
+messagingSenderId:"513083205642",  
+  
+appId:"1:513083205642:web:532ef673dfb4a2c3f0d7f3"  
+  
+};  
+
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+const db = getDatabase(app);
+
+
+
+/* ==========================================
+   SETTINGS
+========================================== */
+
+const MIN_WITHDRAWAL = 1200;
+
+const FEE_RATE = 0.0875;
+
+
+
+/* ==========================================
+   ELEMENTS
+========================================== */
+
+const balanceAmount =
+document.getElementById("balanceAmount");
+
+const balanceStatus =
+document.getElementById("balanceStatus");
+
+const totalWithdrawn =
+document.getElementById("totalWithdrawn");
+
+const pendingAmount =
+document.getElementById("pendingAmount");
+
+const withdrawAmount =
+document.getElementById("withdrawAmount");
+
+const phoneNumber =
+document.getElementById("phoneNumber");
+
+const registeredName =
+document.getElementById("registeredName");
+
+const accountPassword =
+document.getElementById("accountPassword");
+
+const showAmount =
+document.getElementById("showAmount");
+
+const showFee =
+document.getElementById("showFee");
+
+const showReceive =
+document.getElementById("showReceive");
+
+const withdrawAllBtn =
+document.getElementById("withdrawAllBtn");
+
+const withdrawBtn =
+document.getElementById("withdrawBtn");
+
+const historyContainer =
+document.getElementById("historyContainer");
+
+
+
+/* ==========================================
+   VARIABLES
+========================================== */
+
+let currentUser = null;
+
+let currentBalance = 0;
+
+let currentPending = 0;
+
+let currentTotalWithdrawn = 0;
+
+let currentUserData = {};
+
+
+
+/* ==========================================
+   FORMAT MONEY
+========================================== */
+
+function money(value){
+
+return Number(value || 0)
+.toLocaleString("en-US") + " RWF";
+
+}
+
+
+
+/* ==========================================
+   POPUP
+========================================== */
+
+window.showPopup = function(
+type,
+title,
+message
+){
+
+const overlay =
+document.getElementById("popupOverlay");
+
+const box =
+document.getElementById("popupBox");
+
+const icon =
+document.getElementById("popupIcon");
+
+const popupTitle =
+document.getElementById("popupTitle");
+
+const popupMessage =
+document.getElementById("popupMessage");
+
+
+box.className =
+"popup " + type;
+
+
+popupTitle.textContent =
+title;
+
+
+popupMessage.textContent =
+message;
+
+
+if(type === "success"){
+
+icon.innerHTML =
+'<i class="fa-solid fa-check"></i>';
+
+}
+
+else if(type === "error"){
+
+icon.innerHTML =
+'<i class="fa-solid fa-xmark"></i>';
+
+}
+
+else{
+
+icon.innerHTML =
+'<i class="fa-solid fa-triangle-exclamation"></i>';
+
+}
+
+
+overlay.classList.add("show");
+
+};
+
+
+
+window.closePopup = function(){
+
+document
+.getElementById("popupOverlay")
+.classList.remove("show");
+
+};
+
+
+
+/* ==========================================
+   AUTH
+========================================== */
+
+onAuthStateChanged(auth, user => {
+
+if(!user){
+
+showPopup(
+"error",
+"Login Required",
+"Please log in to your PV Africa account before requesting a withdrawal."
+);
+
+withdrawBtn.disabled = true;
+
+withdrawAllBtn.disabled = true;
+
+return;
+
+}
+
+
+currentUser = user;
+
+withdrawBtn.disabled = false;
+
+withdrawAllBtn.disabled = false;
+
+
+/*
+Load this user's profile.
+*/
+
+loadUserData(user.uid);
+
+
+/*
+Load withdrawal history.
+*/
+
+loadWithdrawalHistory(user.uid);
+
+});
+
+
+
+/* ==========================================
+   LOAD USER
+========================================== */
+
+function loadUserData(uid){
+
+const userRef =
+ref(db,"users/" + uid);
+
+
+onValue(userRef, snapshot => {
+
+if(!snapshot.exists()){
+
+balanceAmount.textContent =
+"0 RWF";
+
+balanceStatus.textContent =
+"Account information unavailable.";
+
+return;
+
+}
+
+
+const data =
+snapshot.val() || {};
+
+currentUserData = data;
+
+
+/*
+Support common field names.
+*/
+
+currentBalance =
+Number(
+data.balance ??
+data.availableBalance ??
+data.walletBalance ??
+0
+);
+
+
+currentTotalWithdrawn =
+Number(
+data.totalWithdrawn ??
+data.withdrawn ??
+0
+);
+
+
+/*
+User details
+*/
+
+
+const phone =
+data.phone ??
+data.phoneNumber ??
+data.mobile ??
+"";
+
+
+
+if(phone){
+
+phoneNumber.value =
+formatRwandaPhone(phone);
+
+}
+
+
+balanceAmount.textContent =
+money(currentBalance);
+
+
+totalWithdrawn.textContent =
+money(currentTotalWithdrawn);
+
+
+balanceStatus.textContent =
+currentBalance >= MIN_WITHDRAWAL
+?
+"Ready for withdrawal"
+:
+"Minimum withdrawal is 1,200 RWF";
+
+
+updateSummary();
+
+});
+
+}
+
+
+
+/* ==========================================
+   RWANDA PHONE FORMAT
+========================================== */
+
+function formatRwandaPhone(value){
+
+let digits =
+String(value || "")
+.replace(/\D/g,"");
+
+
+if(digits.startsWith("250")){
+
+digits =
+digits.substring(3);
+
+}
+
+
+if(digits.startsWith("0")){
+
+digits =
+digits.substring(1);
+
+}
+
+
+digits =
+digits.substring(0,9);
+
+
+let result = "+250 7";
+
+
+if(digits.length > 1){
+
+result +=
+digits.substring(1,3);
+
+}
+
+
+if(digits.length > 3){
+
+result +=
+" " + digits.substring(3,6);
+
+}
+
+
+if(digits.length > 6){
+
+result +=
+" " + digits.substring(6,9);
+
+}
+
+
+return result;
+
+}
+
+
+
+/* ==========================================
+   PHONE INPUT
+========================================== */
+
+phoneNumber.addEventListener(
+"input",
+function(){
+
+let digits =
+this.value.replace(/\D/g,"");
+
+
+if(digits.startsWith("250")){
+
+digits =
+digits.substring(3);
+
+}
+
+
+if(digits.startsWith("0")){
+
+digits =
+digits.substring(1);
+
+}
+
+
+/*
+Only 9 Rwanda mobile digits.
+*/
+
+digits =
+digits.substring(0,9);
+
+
+if(digits.length === 0){
+
+this.value = "+250 7";
+
+return;
+
+}
+
+
+if(!digits.startsWith("7")){
+
+this.value = "+250 7";
+
+return;
+
+}
+
+
+let result =
+"+250 " + digits.substring(0,3);
+
+
+if(digits.length > 3){
+
+result +=
+" " + digits.substring(3,6);
+
+}
+
+
+if(digits.length > 6){
+
+result +=
+" " + digits.substring(6,9);
+
+}
+
+
+this.value = result;
+
+});
+
+
+
+/* ==========================================
+   CALCULATE FEE
+========================================== */
+
+function calculateWithdrawal(amount){
+
+amount =
+Number(amount || 0);
+
+
+if(amount <= 0){
+
+return {
+amount:0,
+fee:0,
+receive:0
+};
+
+}
+
+
+const fee =
+Math.round(amount * FEE_RATE);
+
+
+const receive =
+amount - fee;
+
+
+return {
+amount,
+fee,
+receive
+};
+
+}
+
+
+
+/* ==========================================
+   UPDATE SUMMARY
+========================================== */
+
+function updateSummary(){
+
+const amount =
+Number(withdrawAmount.value || 0);
+
+
+const result =
+calculateWithdrawal(amount);
+
+
+showAmount.textContent =
+money(result.amount);
+
+
+showFee.textContent =
+money(result.fee);
+
+
+if(amount > 0 && amount < MIN_WITHDRAWAL){
+
+showReceive.textContent =
+"Minimum 1,200 RWF";
+
+return;
+
+}
+
+
+if(amount > currentBalance){
+
+showReceive.textContent =
+"Insufficient balance";
+
+return;
+
+}
+
+
+showReceive.textContent =
+money(result.receive);
+
+}
+
+
+
+/* ==========================================
+   AMOUNT INPUT
+========================================== */
+
+withdrawAmount.addEventListener(
+"input",
+updateSummary
+);
+
+
+
+/* ==========================================
+   WITHDRAW ALL
+========================================== */
+
+withdrawAllBtn.addEventListener(
+"click",
+function(){
+
+if(!currentUser){
+
+showPopup(
+"error",
+"Login Required",
+"Please log in first."
+);
+
+return;
+
+}
+
+
+if(currentBalance < MIN_WITHDRAWAL){
+
+showPopup(
+"warning",
+"Insufficient Balance",
+"You need at least 1,200 RWF available before you can request a withdrawal."
+);
+
+return;
+
+}
+
+
+withdrawAmount.value =
+Math.floor(currentBalance);
+
+
+updateSummary();
+
+});
+
+
+
+/* ==========================================
+   REQUEST WITHDRAWAL
+========================================== */
+
+withdrawBtn.addEventListener(
+"click",
+async function(){
+
+if(!currentUser){
+
+showPopup(
+"error",
+"Login Required",
+"Please log in to your account first."
+);
+
+return;
+
+}
+
+
+const amount =
+Number(withdrawAmount.value || 0);
+
+
+const password =
+accountPassword.value.trim();
+
+
+const phone =
+phoneNumber.value.trim();
+
+
+const name =
+registeredName.value.trim();
+
+
+
+/*
+Validation
+*/
+
+if(amount < MIN_WITHDRAWAL){
+
+showPopup(
+"warning",
+"Minimum Withdrawal",
+"The minimum withdrawal amount is 1,200 RWF."
+);
+
+return;
+
+}
+
+
+if(amount > currentBalance){
+
+showPopup(
+"error",
+"Insufficient Balance",
+"You cannot withdraw more than your available balance."
+);
+
+return;
+
+}
+
+
+if(!phone || phone.length < 14){
+
+showPopup(
+"warning",
+"Invalid Phone Number",
+"Please enter a valid Rwanda MTN Mobile Money number."
+);
+
+return;
+
+}
+
+
+if(!name){
+
+showPopup(
+"warning",
+"MTN Name Required",
+"Enter the name registered on your MTN Mobile Money account."
+);
+
+return;
+
+  }
+
+
+
+if(!password){
+
+showPopup(
+"warning",
+"Password Required",
+"Enter your PV Africa account password to continue."
+);
+
+return;
+
+}
+
+
+
+/*
+Calculate fee
+*/
+
+const result =
+calculateWithdrawal(amount);
+
+
+
+/*
+Prevent double submission.
+*/
+
+withdrawBtn.disabled = true;
+
+withdrawBtn.innerHTML =
+'<span class="loader"></span>Processing...';
+
+
+
+try{
+
+
+/* ======================================
+   RE-AUTHENTICATE USER
+====================================== */
+
+if(!currentUser.email){
+
+throw new Error(
+"This account does not have an email login."
+);
+
+}
+
+
+const credential =
+EmailAuthProvider.credential(
+currentUser.email,
+password
+);
+
+
+await reauthenticateWithCredential(
+    currentUser,
+    credential
+);
+
+
+/* ======================================
+   CREATE WITHDRAWAL REQUEST
+====================================== */
+
+const withdrawalRef =
+push(
+    ref(
+        db,
+        "withdrawalRequests/" + currentUser.uid
+    )
+);
+
+const withdrawalId =
+withdrawalRef.key;
+
+const requestData = {
+
+    id: withdrawalId,
+
+    uid: currentUser.uid,
+
+    email: currentUser.email,
+
+    name: name,
+
+    phone: phone,
+
+    method: "MTN Mobile Money",
+
+    amount: amount,
+
+    fee: result.fee,
+
+    receive: result.receive,
+
+    status: "pending",
+
+    createdAt: Date.now(),
+
+    updatedAt: Date.now()
+
+};
+
+
+const userRef =
+ref(db, "users/" + currentUser.uid);
+
+
+const transactionResult =
+await runTransaction(userRef, (userData) => {
+
+    if (!userData) return userData;
+
+    const balance =
+        Number(userData.balance || 0);
+
+    const pending =
+        Number(userData.pending || 0);
+
+    if (amount > balance) {
+        return;
+    }
+
+    userData.balance =
+        balance - amount;
+
+    userData.pending =
+        pending + amount;
+
+    return userData;
+
+});
+
+
+if (!transactionResult.committed) {
+
+    throw new Error(
+        "INSUFFICIENT_BALANCE"
+    );
+
+  }
+
+await set(
+withdrawalRef,
+requestData
+);
+
+
+
+/*
+DO NOT deduct the balance here.
+
+The request is pending until an authorized
+admin/backend approves it.
+*/
+
+
+accountPassword.value = "";
+
+withdrawAmount.value = "";
+
+updateSummary();
+
+
+showPopup(
+"success",
+"Withdrawal Requested",
+"Your withdrawal request of " +
+money(amount) +
+" has been submitted successfully. It is now pending review."
+);
+
+
+}
+
+  catch(error){
+
+console.error("WITHDRAWAL ERROR:", error);
+
+alert(
+"Withdrawal error:\n\n" +
+(error.code || "") +
+"\n" +
+(error.message || error)
+);
+
+let message =
+"Unable to submit your withdrawal request.";
+
+
+if(
+error.code ===
+"auth/invalid-credential" ||
+error.code ===
+"auth/wrong-password" ||
+error.code ===
+"auth/invalid-login-credentials"
+){
+
+message =
+"Your account password is incorrect.";
+
+}
+
+
+else if(
+error.code ===
+"auth/too-many-requests"
+){
+
+message =
+"Too many attempts. Please try again later.";
+
+}
+
+
+else if(
+error.code ===
+"PERMISSION_DENIED"
+){
+
+message =
+"Firebase permission denied. Check your database security rules.";
+
+}
+
+
+showPopup(
+"error",
+"Withdrawal Failed",
+message
+);
+
+}
+
+
+finally{
+
+withdrawBtn.disabled = false;
+
+withdrawBtn.innerHTML =
+'<i class="fa-solid fa-paper-plane"></i> Request Withdrawal';
+
+}
+
+});
+
+
+
+/* ==========================================
+   LOAD WITHDRAWAL HISTORY
+========================================== */
+
+function loadWithdrawalHistory(uid){
+
+const withdrawalsRef =
+ref(
+db,
+"withdrawalRequests/" + uid
+);
+
+
+onValue(
+withdrawalsRef,
+snapshot => {
+
+historyContainer.innerHTML = "";
+
+currentPending = 0;
+
+
+if(!snapshot.exists()){
+
+pendingAmount.textContent =
+"0 RWF";
+
+
+historyContainer.innerHTML = `
+
+<div class="empty-history">
+
+<i class="fa-solid fa-clock-rotate-left"></i>
+
+<p>No withdrawals yet.</p>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+const withdrawals = [];
+
+
+snapshot.forEach(child => {
+
+const item =
+child.val();
+
+if(item){
+
+withdrawals.push(item);
+
+}
+
+});
+
+
+
+/*
+Newest first
+*/
+
+withdrawals.sort(
+(a,b) =>
+Number(b.createdAt || 0)
+-
+Number(a.createdAt || 0)
+);
+
+
+
+/*
+Calculate pending total
+*/
+
+withdrawals.forEach(item => {
+
+if(
+item.status === "pending" ||
+item.status === "processing"
+){
+
+currentPending +=
+Number(item.amount || 0);
+
+}
+
+});
+
+
+pendingAmount.textContent =
+money(currentPending);
+
+
+
+/*
+Show latest 20
+*/
+
+const latest =
+withdrawals.slice(0,20);
+
+
+latest.forEach(
+(item,index) => {
+
+const html =
+createHistoryItem(item);
+
+
+historyContainer.insertAdjacentHTML(
+"beforeend",
+html
+);
+
+
+if(index < latest.length - 1){
+
+historyContainer.insertAdjacentHTML(
+"beforeend",
+"<hr>"
+);
+
+}
+
+});
+
+});
+
+}
+
+
+
+/* ==========================================
+   HISTORY ITEM
+========================================== */
+
+function createHistoryItem(item){
+
+const amount =
+Number(item.amount || 0);
+
+
+const status =
+String(item.status || "pending")
+.toLowerCase();
+
+
+let icon =
+"fa-clock";
+
+let iconClass =
+"pending";
+
+let textClass =
+"pending-text";
+
+let statusText =
+"Pending";
+
+
+if(status === "completed" ||
+status === "approved"){
+
+icon =
+"fa-circle-check";
+
+iconClass =
+"completed";
+
+textClass =
+"completed-text";
+
+statusText =
+"Completed";
+
+}
+
+
+else if(status === "rejected"){
+
+icon =
+"fa-circle-xmark";
+
+iconClass =
+"rejected";
+
+textClass =
+"rejected-text";
+
+statusText =
+"Rejected";
+
+}
+
+
+else if(status === "processing"){
+
+icon =
+"fa-spinner";
+
+iconClass =
+"processing";
+
+textClass =
+"processing-text";
+
+statusText =
+"Processing";
+
+}
+
+
+
+const date =
+formatDate(item.createdAt);
+
+
+
+return `
+
+<div class="history-item">
+
+<div class="left">
+
+<div class="history-icon ${iconClass}">
+
+<i class="fa-solid ${icon}"></i>
+
+</div>
+
+<div>
+
+<h4>
+${money(amount)}
+</h4>
+
+<p>
+${escapeHTML(item.method || "MTN Mobile Money")}
+</p>
+
+<small class="${textClass}">
+${statusText} • ${date}
+</small>
+
+</div>
+
+</div>
+
+<div class="right">
+${formatTime(item.createdAt)}
+</div>
+
+</div>
+
+`;
+
+}
+
+
+
+/* ==========================================
+   DATE
+========================================== */
+
+function formatDate(timestamp){
+
+if(!timestamp){
+
+return "Unknown";
+
+}
+
+
+const date =
+new Date(Number(timestamp));
+
+
+const today =
+new Date();
+
+
+const yesterday =
+new Date();
+
+
+yesterday.setDate(
+today.getDate() - 1
+);
+
+
+if(
+date.toDateString() ===
+today.toDateString()
+){
+
+return "Today";
+
+}
+
+
+if(
+date.toDateString() ===
+yesterday.toDateString()
+){
+
+return "Yesterday";
+
+}
+
+
+return date.toLocaleDateString(
+"en-GB",
+{
+day:"2-digit",
+month:"short"
+}
+);
+
+}
+
+
+
+/* ==========================================
+   TIME
+========================================== */
+
+function formatTime(timestamp){
+
+if(!timestamp){
+
+return "";
+
+}
+
+
+return new Date(
+Number(timestamp)
+).toLocaleTimeString(
+"en-GB",
+{
+hour:"2-digit",
+minute:"2-digit"
+}
+);
+
+}
+
+
+
+/* ==========================================
+   SECURITY - ESCAPE TEXT
+========================================== */
+
+function escapeHTML(value){
+
+return String(value || "")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+</script>
