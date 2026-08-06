@@ -1,0 +1,706 @@
+<!DOCTYPE html><html lang="rw"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>PV Africa - Umwirondoro</title><link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"><style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Segoe UI",sans-serif;
+}
+
+body{
+background:linear-gradient(160deg,#060014,#24005c,#002040);
+color:white;
+min-height:100vh;
+padding:20px;
+padding-bottom:120px;
+}
+
+/* LOADER */
+
+#loader{
+position:fixed;
+inset:0;
+background:#060014;
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:99999;
+}
+
+.spinner{
+width:60px;
+height:60px;
+border:5px solid rgba(255,255,255,.2);
+border-top:5px solid #00ff88;
+border-radius:50%;
+animation:spin .8s linear infinite;
+}
+
+@keyframes spin{
+to{
+transform:rotate(360deg);
+}
+}
+
+/* HEADER */
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+font-size:28px;
+font-weight:900;
+}
+
+.logo span{
+color:#00ff88;
+}
+
+.profile{
+width:48px;
+height:48px;
+border-radius:50%;
+background:linear-gradient(135deg,#00ff88,#00b85c);
+display:flex;
+align-items:center;
+justify-content:center;
+color:#000;
+text-decoration:none;
+box-shadow:0 0 15px rgba(0,255,136,.5);
+}
+
+/* TITLE */
+
+.title{
+margin:30px 0;
+}
+
+.title h1{
+font-size:30px;
+}
+
+.title p{
+color:rgba(255,255,255,.7);
+margin-top:8px;
+}
+
+/* PROFILE CARD */
+
+.profile-card{
+background:linear-gradient(135deg,#7b00ff,#005bea);
+padding:30px;
+border-radius:30px;
+text-align:center;
+box-shadow:0 20px 40px rgba(0,0,0,.4);
+}
+
+.avatar{
+width:95px;
+height:95px;
+border-radius:50%;
+background:rgba(255,255,255,.18);
+display:flex;
+align-items:center;
+justify-content:center;
+margin:auto;
+font-size:42px;
+border:3px solid rgba(255,255,255,.3);
+}
+
+.profile-card h2{
+margin-top:15px;
+}
+
+.username{
+opacity:.8;
+margin-top:5px;
+}
+
+/* STATS */
+
+.stats{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+margin-top:20px;
+}
+
+.stat{
+background:rgba(255,255,255,.1);
+backdrop-filter:blur(15px);
+padding:20px;
+border-radius:22px;
+text-align:center;
+border:1px solid rgba(255,255,255,.15);
+}
+
+.stat i{
+font-size:25px;
+color:#00ff88;
+}
+
+.stat h3{
+margin-top:10px;
+font-size:18px;
+}
+
+.stat p{
+font-size:13px;
+color:#aaa;
+}
+
+/* SECTION */
+
+.section-title{
+margin:30px 0 15px;
+font-size:22px;
+}
+
+/* INFO */
+
+.info-card{
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(15px);
+border:1px solid rgba(255,255,255,.12);
+padding:18px;
+border-radius:22px;
+margin-bottom:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px;
+}
+
+.left{
+display:flex;
+align-items:center;
+gap:15px;
+min-width:0;
+}
+
+.left i{
+font-size:22px;
+color:#00ff88;
+}
+
+.info-card h4{
+margin-bottom:5px;
+}
+
+.info-card p{
+font-size:13px;
+color:#aaa;
+}
+
+.value{
+font-weight:bold;
+font-size:14px;
+text-align:right;
+word-break:break-word;
+}
+
+/* LOGOUT */
+
+.logout{
+width:100%;
+margin-top:25px;
+padding:16px;
+border:none;
+border-radius:25px;
+background:#ff4d4f;
+color:white;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.logout:active{
+transform:scale(.98);
+}
+
+/* BOTTOM NAV */
+
+.bottom-nav{
+position:fixed;
+bottom:15px;
+left:15px;
+right:15px;
+height:75px;
+background:rgba(15,15,35,.92);
+backdrop-filter:blur(20px);
+border-radius:35px;
+display:flex;
+justify-content:space-around;
+align-items:center;
+z-index:999;
+}
+
+.nav{
+text-align:center;
+font-size:12px;
+color:#aaa;
+text-decoration:none;
+-webkit-tap-highlight-color:transparent;
+}
+
+.nav i{
+display:block;
+font-size:23px;
+margin-bottom:5px;
+}
+
+.nav.active{
+color:#00ff88;
+}
+
+.nav:active{
+transform:scale(.95);
+}
+
+</style></head><body><!-- LOADER --><div id="loader">
+<div class="spinner"></div>
+</div><!-- HEADER --><div class="header"><div class="logo">
+PV <span>Africa</span>
+</div><a href="profile.html" class="profile">
+<i class="fa-solid fa-user"></i>
+</a></div><!-- TITLE --><div class="title"><h1>
+Umwirondoro Wanjye
+</h1><p>
+Reba kandi ucunge amakuru ya konti yawe.
+</p></div><!-- PROFILE CARD --><div class="profile-card"><div class="avatar">
+<i class="fa-solid fa-user"></i>
+</div><h2 id="fullName">
+Birimo gutegurwa...
+</h2><p class="username" id="username">
+@birimo gutegurwa
+</p></div><!-- STATS --><div class="stats"><div class="stat"><i class="fa-solid fa-wallet"></i>
+
+<h3 id="investment">
+0 RWF
+</h3><p>
+Igishoro Cyawe
+</p></div><div class="stat"><i class="fa-solid fa-coins"></i>
+
+<h3 id="totalEarned">
+0 RWF
+</h3><p>
+Inyungu Yose
+</p></div></div><!-- ACCOUNT DETAILS --><h2 class="section-title">
+Amakuru Ya Konti
+</h2><div class="info-card"><div class="left"><i class="fa-solid fa-user"></i>
+
+<div><h4>
+Amazina Yuzuye
+</h4><p>
+Nyir'iyi konti
+</p></div></div><div class="value" id="fullNameValue">
+Birimo gutegurwa...
+</div></div><div class="info-card"><div class="left"><i class="fa-solid fa-phone"></i>
+
+<div><h4>
+Nimero Ya Telefoni
+</h4><p>
+MTN Mobile Money
+</p></div></div><div class="value" id="phone">
+Ntabwo yatanzwe
+</div></div><div class="info-card"><div class="left"><i class="fa-solid fa-envelope"></i>
+
+<div><h4>
+Imeyili
+</h4><p>
+Imeyili ukoresha winjira
+</p></div></div><div class="value" id="email">
+Birimo gutegurwa...
+</div></div><!-- SECURITY --><h2 class="section-title">
+Umutekano Wa Konti
+</h2><div class="info-card"><div class="left"><i class="fa-solid fa-circle-check"></i>
+
+<div><h4>
+Imiterere Ya Konti
+</h4><p>
+Kugenzura niba konti yawe yemerewe
+</p></div></div><div class="value" id="accountStatus">
+Birimo kugenzurwa...
+</div></div><div class="info-card"><div class="left"><i class="fa-solid fa-users"></i>
+
+<div><h4>
+ID Yo Gutumira
+</h4><p>
+Sangiza inshuti zawe
+</p></div></div><div class="value" id="referralId">
+Ntabwo iboneka
+</div></div><div class="info-card"><div class="left"><i class="fa-solid fa-user-group"></i>
+
+<div><h4>
+Abo Watumiye Bose
+</h4><p>
+Abantu watumiye ukoresheje konti yawe
+</p></div></div><div class="value" id="referrals">
+0 Bantu
+</div></div><!-- LOGOUT --><button class="logout" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i>
+
+Sohoka Muri Konti
+
+</button><!-- BOTTOM NAV --><div class="bottom-nav"><a href="dashboard.html" class="nav"><i class="fa-solid fa-house"></i>
+
+Ahabanza
+
+</a><a href="investment.html" class="nav"><i class="fa-solid fa-chart-pie"></i>
+
+Ishoramari
+
+</a><a href="Earn.html" class="nav"><i class="fa-solid fa-coins"></i>
+
+Imirimo
+
+</a><a href="withdraw.html" class="nav"><i class="fa-solid fa-wallet"></i>
+
+Kubikuza
+
+</a><a href="about.html" class="nav"><i class="fa-solid fa-circle-info"></i>
+
+Abo Turi Bo
+
+</a></div><!-- FIREBASE --><script type="module">
+
+import {
+initializeApp
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+
+import {
+getAuth,
+onAuthStateChanged,
+signOut
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+import {
+getDatabase,
+ref,
+get
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+
+/* =========================
+   FIREBASE CONFIG
+========================= */
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyBXV-MbphBrh20w-YYZgBBDuQ976XwLbq8",
+
+authDomain: "onafriq-5256f.firebaseapp.com",
+
+databaseURL:
+"https://onafriq-5256f-default-rtdb.firebaseio.com",
+
+projectId: "onafriq-5256f",
+
+storageBucket:
+"onafriq-5256f.firebasestorage.app",
+
+messagingSenderId: "513083205642",
+
+appId:
+"1:513083205642:web:532ef673dfb4a2c3f0d7f3"
+
+};
+
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+const db = getDatabase(app);
+
+
+/* =========================
+   ELEMENTS
+========================= */
+
+const loader =
+document.getElementById("loader");
+
+const logoutBtn =
+document.getElementById("logoutBtn");
+
+
+/* =========================
+   FORMAT MONEY
+========================= */
+
+function formatRWF(value){
+
+return Number(value || 0)
+.toLocaleString() + " RWF";
+
+}
+
+
+/* =========================
+   AUTH STATE
+========================= */
+
+onAuthStateChanged(auth, async (user) => {
+
+if(!user){
+
+location.href = "Login.html";
+
+return;
+
+}
+
+
+try{
+
+/*
+Kubika UID kugira ngo
+izindi pages ziyikoreshe.
+*/
+
+localStorage.setItem(
+"pvAfricaUserUID",
+user.uid
+);
+
+
+/*
+Kubona amakuru ya konti:
+users/{uid}
+*/
+
+const userRef =
+ref(db, "users/" + user.uid);
+
+const snapshot =
+await get(userRef);
+
+
+if(!snapshot.exists()){
+
+alert("Amakuru ya konti yawe ntiyabonetse.");
+
+await signOut(auth);
+
+location.href = "Login.html";
+
+return;
+
+}
+
+
+const d = snapshot.val();
+
+
+/* =========================
+   AMAKURU Y'UMUKORESHA
+========================= */
+
+const fullName =
+d.fullName ||
+d.name ||
+d.username ||
+"Umukoresha";
+
+const username =
+d.username ||
+"umukoresha";
+
+
+const email =
+d.email ||
+user.email ||
+"Ntabwo yatanzwe";
+
+
+const phone =
+d.phone ||
+d.phoneNumber ||
+"Ntabwo yatanzwe";
+
+
+/* =========================
+   UMwirondoro
+========================= */
+
+document.getElementById("fullName")
+.textContent = fullName;
+
+
+document.getElementById("username")
+.textContent = "@" + username;
+
+
+document.getElementById("fullNameValue")
+.textContent = fullName;
+
+
+document.getElementById("email")
+.textContent = email;
+
+
+document.getElementById("phone")
+.textContent = phone;
+
+
+/* =========================
+   AMAFARANGA
+========================= */
+
+const investment =
+Number(d.deposit || 0);
+
+
+const totalEarned =
+Number(d.totalEarned || 0);
+
+
+document.getElementById("investment")
+.textContent =
+formatRWF(investment);
+
+
+document.getElementById("totalEarned")
+.textContent =
+formatRWF(totalEarned);
+
+
+/* =========================
+   IMITERERE YA KONTI
+========================= */
+
+const status =
+document.getElementById("accountStatus");
+
+
+if(d.active === true){
+
+status.textContent = "Active";
+
+status.style.color = "#00ff88";
+
+}else{
+
+status.textContent = "NTIRAKORA";
+
+status.style.color = "#ff4d4f";
+
+}
+
+
+/* =========================
+   GUTUMIRA
+========================= */
+
+document.getElementById("referralId")
+.textContent =
+username;
+
+
+const referralCount =
+Number(d.referrals || 0);
+
+
+document.getElementById("referrals")
+.textContent =
+referralCount +
+(referralCount === 1 ? " Umuntu" : " Abantu");
+
+
+}catch(error){
+
+console.error(
+"PROFILE ERROR:",
+error
+);
+
+alert(
+"Ntibyashobotse gufungura umwirondoro wawe."
+);
+
+}finally{
+
+loader.style.display = "none";
+
+}
+
+});
+
+
+/* =========================
+   SOHOKA MURI KONTI
+========================= */
+
+logoutBtn.addEventListener(
+"click",
+async () => {
+
+const original =
+logoutBtn.innerHTML;
+
+logoutBtn.disabled = true;
+
+logoutBtn.innerHTML =
+'<i class="fa-solid fa-spinner fa-spin"></i> Turimo kugusohora...';
+
+try{
+
+await signOut(auth);
+
+localStorage.removeItem(
+"pvAfricaUserUID"
+);
+
+location.href = "Login.html";
+
+}catch(error){
+
+console.error(
+"LOGOUT ERROR:",
+error
+);
+
+alert(
+"Ntibyashobotse gusohoka. Ongera ugerageze."
+);
+
+logoutBtn.disabled = false;
+
+logoutBtn.innerHTML = original;
+
+}
+
+});
+
+
+/* =========================
+   VIBRATION
+========================= */
+
+document.querySelectorAll(
+".nav, .profile, .logout"
+).forEach(item => {
+
+item.addEventListener(
+"click",
+() => {
+
+if(navigator.vibrate){
+
+navigator.vibrate(40);
+
+}
+
+});
+
+});
+
+</script>
+
+</body>
+</html>
