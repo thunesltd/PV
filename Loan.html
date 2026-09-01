@@ -1,0 +1,2131 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PV Africa - Loan</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Segoe UI",sans-serif;
+}
+
+body{
+background:linear-gradient(160deg,#060014,#24005c,#002040);
+color:#fff;
+padding:20px;
+padding-bottom:120px;
+min-height:100vh;
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+}
+
+.logo{
+font-size:28px;
+font-weight:900;
+}
+
+.logo span{
+color:#00ff88;
+}
+
+.profile{
+width:48px;
+height:48px;
+border-radius:50%;
+background:linear-gradient(135deg,#8e2de2,#4a00e0);
+display:flex;
+align-items:center;
+justify-content:center;
+text-decoration:none;
+color:white;
+-webkit-tap-highlight-color:transparent;
+}
+
+.profile:focus,
+.profile:active{
+outline:none;
+}
+
+.title{
+margin-bottom:25px;
+}
+
+.title h1{
+font-size:28px;
+margin-bottom:8px;
+}
+
+.title p{
+color:rgba(255,255,255,.7);
+line-height:1.5;
+}
+
+/* LOAN HERO */
+
+.loan-hero{
+background:linear-gradient(135deg,#7b00ff,#005bea);
+padding:25px;
+border-radius:28px;
+margin-bottom:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.35);
+}
+
+.loan-hero small{
+opacity:.8;
+}
+
+.loan-hero h2{
+font-size:32px;
+margin-top:8px;
+}
+
+.loan-hero p{
+margin-top:8px;
+opacity:.8;
+font-size:14px;
+line-height:1.5;
+}
+
+/* AVAILABLE LOAN */
+
+.available{
+background:rgba(0,255,136,.08);
+border:1px solid rgba(0,255,136,.2);
+padding:20px;
+border-radius:24px;
+margin-bottom:20px;
+}
+
+.available-top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:10px;
+}
+
+.available-top span{
+font-size:14px;
+color:#bbb;
+}
+
+.available-top i{
+color:#00ff88;
+font-size:20px;
+}
+
+.available h2{
+font-size:28px;
+color:#00ff88;
+margin-bottom:12px;
+}
+
+.progress{
+height:8px;
+background:rgba(255,255,255,.12);
+border-radius:20px;
+overflow:hidden;
+}
+
+.progress-bar{
+height:100%;
+width:100%;
+background:#00ff88;
+border-radius:20px;
+transition:.4s;
+}
+
+.available-info{
+display:flex;
+justify-content:space-between;
+font-size:12px;
+color:#aaa;
+margin-top:8px;
+}
+
+/* LIMITS */
+
+.limits{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+margin-bottom:20px;
+}
+
+.limit{
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(15px);
+border:1px solid rgba(255,255,255,.15);
+padding:18px;
+border-radius:22px;
+}
+
+.limit i{
+font-size:22px;
+color:#00ff88;
+margin-bottom:10px;
+}
+
+.limit p{
+font-size:13px;
+color:#bbb;
+}
+
+.limit h3{
+font-size:20px;
+margin-top:6px;
+}
+
+/* CARD */
+
+.card{
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(18px);
+border:1px solid rgba(255,255,255,.15);
+padding:22px;
+border-radius:25px;
+margin-bottom:20px;
+}
+
+.card h2{
+margin-bottom:18px;
+font-size:20px;
+}
+
+label{
+display:block;
+margin-bottom:8px;
+font-size:14px;
+color:#ddd;
+}
+
+.input,
+select,
+textarea{
+width:100%;
+padding:16px;
+border:none;
+outline:none;
+border-radius:18px;
+background:rgba(255,255,255,.12);
+color:#fff;
+margin-bottom:18px;
+font-size:15px;
+}
+
+.input::placeholder,
+textarea::placeholder{
+color:#bbb;
+}
+
+select{
+appearance:none;
+}
+
+select option{
+background:#171127;
+color:#fff;
+}
+
+textarea{
+resize:none;
+min-height:100px;
+}
+
+/* QUICK AMOUNTS */
+
+.quick-title{
+font-size:13px;
+color:#aaa;
+margin-bottom:10px;
+}
+
+.quick-buttons{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:8px;
+margin-bottom:18px;
+}
+
+.quick-btn{
+padding:11px 5px;
+border:none;
+border-radius:14px;
+background:rgba(255,255,255,.1);
+color:#fff;
+font-size:12px;
+cursor:pointer;
+}
+
+.quick-btn:active{
+transform:scale(.96);
+}
+
+.note{
+display:flex;
+justify-content:space-between;
+font-size:13px;
+color:#bbb;
+margin-bottom:18px;
+gap:10px;
+}
+
+.loan-btn{
+width:100%;
+padding:17px;
+border:none;
+border-radius:25px;
+background:#00ff88;
+color:#000;
+font-size:17px;
+font-weight:700;
+cursor:pointer;
+transition:.3s;
+}
+
+.loan-btn:hover{
+transform:scale(.98);
+}
+
+.loan-btn:disabled{
+opacity:.5;
+cursor:not-allowed;
+}
+
+/* SUMMARY */
+
+.summary{
+margin-top:20px;
+background:rgba(255,255,255,.06);
+padding:18px;
+border-radius:20px;
+}
+
+.row{
+display:flex;
+justify-content:space-between;
+margin:12px 0;
+font-size:15px;
+}
+
+.value{
+font-weight:bold;
+}
+
+.green{
+color:#00ff88;
+}
+
+.balance-result{
+color:#00ff88;
+font-weight:bold;
+}
+
+/* HISTORY */
+
+.history-title{
+margin:25px 0 15px;
+font-size:20px;
+}
+
+.history-item{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 0;
+gap:10px;
+}
+
+.left{
+display:flex;
+align-items:center;
+gap:15px;
+min-width:0;
+}
+
+.right{
+color:#bbb;
+font-size:13px;
+white-space:nowrap;
+}
+
+.history-icon{
+width:55px;
+height:55px;
+border-radius:18px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:22px;
+flex-shrink:0;
+}
+
+.history-icon.active{
+background:rgba(0,255,136,.15);
+color:#00ff88;
+}
+
+.history-icon.repaid{
+background:rgba(80,150,255,.15);
+color:#55aaff;
+}
+
+.history-icon.cancelled{
+background:rgba(255,82,82,.15);
+color:#ff5252;
+}
+
+.active-text{
+color:#00ff88;
+}
+
+.repaid-text{
+color:#55aaff;
+}
+
+.cancelled-text{
+color:#ff5252;
+}
+
+.history-item h4{
+margin-bottom:4px;
+}
+
+.history-item p{
+font-size:13px;
+color:#bbb;
+margin-bottom:4px;
+}
+
+hr{
+border:none;
+height:1px;
+background:rgba(255,255,255,.08);
+}
+
+.empty-history{
+text-align:center;
+padding:30px 10px;
+color:#aaa;
+}
+
+.empty-history i{
+font-size:35px;
+margin-bottom:12px;
+}
+
+/* NAVIGATION */
+
+.bottom-nav{
+position:fixed;
+left:15px;
+right:15px;
+bottom:15px;
+height:75px;
+background:rgba(15,15,35,.94);
+backdrop-filter:blur(20px);
+border-radius:35px;
+display:flex;
+justify-content:space-around;
+align-items:center;
+border:1px solid rgba(255,255,255,.08);
+z-index:100;
+overflow-x:auto;
+}
+
+.nav{
+text-align:center;
+font-size:11px;
+color:#aaa;
+text-decoration:none;
+-webkit-tap-highlight-color:transparent;
+min-width:58px;
+flex-shrink:0;
+}
+
+.nav i{
+display:block;
+font-size:21px;
+margin-bottom:5px;
+}
+
+.nav.active{
+color:#00ff88;
+}
+
+.nav:active{
+transform:scale(.94);
+}
+
+/* POPUP */
+
+.popup-overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.7);
+backdrop-filter:blur(8px);
+display:none;
+align-items:center;
+justify-content:center;
+padding:20px;
+z-index:999;
+}
+
+.popup-overlay.show{
+display:flex;
+}
+
+.popup{
+width:100%;
+max-width:390px;
+background:#171127;
+border:1px solid rgba(255,255,255,.12);
+border-radius:28px;
+padding:28px 22px;
+text-align:center;
+box-shadow:0 20px 50px rgba(0,0,0,.5);
+animation:popupIn .25s ease;
+}
+
+@keyframes popupIn{
+from{
+transform:scale(.9);
+opacity:0;
+}
+to{
+transform:scale(1);
+opacity:1;
+}
+}
+
+.popup-icon{
+width:65px;
+height:65px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+margin:0 auto 15px;
+font-size:28px;
+}
+
+.popup.success .popup-icon{
+background:rgba(0,255,136,.15);
+color:#00ff88;
+}
+
+.popup.error .popup-icon{
+background:rgba(255,82,82,.15);
+color:#ff5252;
+}
+
+.popup.warning .popup-icon{
+background:rgba(255,193,7,.15);
+color:#ffc107;
+}
+
+.popup h3{
+font-size:21px;
+margin-bottom:10px;
+}
+
+.popup p{
+color:#bbb;
+line-height:1.5;
+font-size:14px;
+}
+
+.popup button{
+margin-top:20px;
+width:100%;
+padding:14px;
+border:0;
+border-radius:18px;
+background:#00ff88;
+font-weight:bold;
+cursor:pointer;
+}
+
+.loader{
+display:inline-block;
+width:17px;
+height:17px;
+border:2px solid rgba(0,0,0,.3);
+border-top-color:#000;
+border-radius:50%;
+animation:spin .7s linear infinite;
+vertical-align:middle;
+margin-right:7px;
+}
+
+@keyframes spin{
+to{
+transform:rotate(360deg);
+}
+}
+
+/* MOBILE */
+
+@media(max-width:380px){
+
+body{
+padding:15px;
+padding-bottom:115px;
+}
+
+.loan-hero h2{
+font-size:27px;
+}
+
+.limits{
+gap:10px;
+}
+
+.limit{
+padding:14px;
+}
+
+.limit h3{
+font-size:17px;
+}
+
+.history-icon{
+width:47px;
+height:47px;
+}
+
+.quick-buttons{
+gap:6px;
+}
+
+.quick-btn{
+font-size:11px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<div class="header">
+
+<div class="logo">
+PV <span>Africa</span>
+</div>
+
+<a href="about.html" class="profile">
+<i class="fa-solid fa-user"></i>
+</a>
+
+</div>
+
+
+<!-- TITLE -->
+
+<div class="title">
+
+<h1>Inguzanyo</h1>
+
+<p>
+Saba amafaranga y'inguzanyo uhitemo n'igihe uzayishyurira binyuze mu mirimo uhabwa.
+</p>
+
+</div>
+
+
+<!-- LOAN HERO -->
+
+<div class="loan-hero">
+
+<small>Inguzanyo Ushobora Kubona</small>
+
+<h2>
+10,000 - 1,500,000 RWF
+</h2>
+
+<p>
+Inguzanyo yawe ihita ijya kuri balance ya konti yawe iyo uyisabye.
+</p>
+
+</div>
+
+
+<!-- AVAILABLE LOAN -->
+
+<div class="available">
+
+<div class="available-top">
+
+<span>
+Inguzanyo wemerewe
+</span>
+
+<i class="fa-solid fa-wallet"></i>
+
+</div>
+
+<h2 id="availableLoan">
+1,500,000 RWF
+</h2>
+
+<div class="progress">
+
+<div
+id="loanProgress"
+class="progress-bar">
+</div>
+
+</div>
+
+<div class="available-info">
+
+<span>
+Ayo wemerewe kuguza: 1,500,000 RWF
+</span>
+
+<span id="usedLoan">
+Ayo wagujije: 0 RWF
+</span>
+
+</div>
+
+</div>
+
+
+<!-- LIMITS -->
+
+<div class="limits">
+
+<div class="limit">
+
+<i class="fa-solid fa-arrow-down"></i>
+
+<p>Inguzanyo Ntoya</p>
+
+<h3>
+10,000 RWF
+</h3>
+
+</div>
+
+
+<div class="limit">
+
+<i class="fa-solid fa-arrow-up"></i>
+
+<p>Inguzanyo Ntarengwa</p>
+
+<h3>
+1,500,000 RWF
+</h3>
+
+</div>
+
+</div>
+
+
+<!-- APPLICATION -->
+
+<div class="card">
+
+<h2>
+Saba Inguzanyo
+</h2>
+
+
+<label>
+Amafaranga Ushaka
+</label>
+
+<input
+id="loanAmount"
+class="input"
+type="number"
+inputmode="numeric"
+min="10000"
+max="1500000"
+placeholder="Andika umubare w'amafaranga"
+>
+
+
+<div class="quick-title">
+Hitamo
+</div>
+
+<div class="quick-buttons">
+
+<button class="quick-btn" data-amount="10000">
+10K
+</button>
+
+<button class="quick-btn" data-amount="50000">
+50K
+</button>
+
+<button class="quick-btn" data-amount="100000">
+100K
+</button>
+
+<button class="quick-btn" data-amount="250000">
+250K
+</button>
+
+<button class="quick-btn" data-amount="500000">
+500K
+</button>
+
+<button class="quick-btn" data-amount="1500000">
+1.5M
+</button>
+
+</div>
+
+
+<label>
+Igihe Uzajya Wishyura
+</label>
+
+<select
+id="repaymentPeriod"
+class="input">
+
+<option value="">
+Hitamo igihe
+</option>
+
+<option value="7">
+Iminsi 7
+</option>
+
+<option value="14">
+Iminsi 14
+</option>
+
+<option value="30">
+Iminsi 30
+</option>
+
+<option value="60">
+Iminsi 60
+</option>
+
+<option value="90">
+Iminsi 90
+</option>
+
+</select>
+
+
+<label>
+Impamvu Usaba Inguzanyo
+</label>
+
+<textarea
+id="loanPurpose"
+placeholder="Andika impamvu usaba inguzanyo..."></textarea>
+
+
+<div class="note">
+
+<span>
+Inguzanyo ntoya: 10,000 RWF
+</span>
+
+<span>
+Ntarengwa: 1,500,000 RWF
+</span>
+
+</div>
+
+
+<button
+id="loanBtn"
+class="loan-btn"
+type="button">
+
+<i class="fa-solid fa-hand-holding-dollar"></i>
+Saba Inguzanyo
+
+</button>
+
+
+<!-- SUMMARY -->
+
+<div class="summary">
+
+<div class="row">
+
+<span>Inguzanyo</span>
+
+<span
+id="showAmount"
+class="value">
+
+0 RWF
+
+</span>
+
+</div>
+
+
+<div class="row">
+
+<span>Igihe</span>
+
+<span
+id="showPeriod"
+class="value">
+
+-
+
+</span>
+
+</div>
+
+
+<div class="row">
+
+<span>Yose hamwe</span>
+
+<span
+id="showBalance"
+class="balance-result">
+
+-
+
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- HISTORY -->
+
+<h2 class="history-title">
+Inguzanyo Zawe
+</h2>
+
+
+<div
+class="card"
+id="historyContainer">
+
+<div class="empty-history">
+
+<i class="fa-solid fa-file-invoice-dollar"></i>
+
+<p>
+Nta nguzanyo urasaba.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- NAVIGATION -->
+
+<div class="bottom-nav">
+
+<a href="dashboard.html" class="nav">
+
+<i class="fa-solid fa-house"></i>
+
+Ahabanza
+
+</a>
+
+
+<a href="investment.html" class="nav">
+
+<i class="fa-solid fa-chart-line"></i>
+
+Ishoramari
+
+</a>
+
+
+<a href="Earn.html" class="nav">
+
+<i class="fa-solid fa-coins"></i>
+
+Imirimo
+
+</a>
+
+
+<a href="withdraw.html" class="nav">
+
+<i class="fa-solid fa-wallet"></i>
+
+Ikofi
+
+</a>
+
+
+<a href="loan.html" class="nav active">
+
+<i class="fa-solid fa-hand-holding-dollar"></i>
+
+Inguzanyo
+
+</a>
+
+</div>
+
+
+<!-- POPUP -->
+
+<div
+id="popupOverlay"
+class="popup-overlay">
+
+<div
+id="popupBox"
+class="popup success">
+
+<div
+id="popupIcon"
+class="popup-icon">
+
+<i class="fa-solid fa-check"></i>
+
+</div>
+
+<h3 id="popupTitle">
+Success
+</h3>
+
+<p id="popupMessage">
+Done.
+</p>
+
+<button onclick="closePopup()">
+OK
+</button>
+
+</div>
+
+</div>
+
+
+<script type="module">
+
+import {
+initializeApp
+}
+from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+
+
+import {
+getAuth,
+onAuthStateChanged
+}
+from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+
+import {
+getDatabase,
+ref,
+onValue,
+runTransaction,
+push,
+set
+}
+from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+
+/* ==========================================
+   FIREBASE CONFIG
+========================================== */
+
+const firebaseConfig = {
+
+apiKey:"AIzaSyBXV-MbphBrh20w-YYZgBBDuQ976XwLbq8",
+
+authDomain:"onafriq-5256f.firebaseapp.com",
+
+databaseURL:"https://onafriq-5256f-default-rtdb.firebaseio.com",
+
+projectId:"onafriq-5256f",
+
+storageBucket:"onafriq-5256f.appspot.com",
+
+messagingSenderId:"513083205642",
+
+appId:"1:513083205642:web:532ef673dfb4a2c3f0d7f3"
+
+};
+
+
+const app =
+initializeApp(firebaseConfig);
+
+const auth =
+getAuth(app);
+
+const db =
+getDatabase(app);
+
+
+/* ==========================================
+   LOAN SETTINGS
+========================================== */
+
+const MIN_LOAN = 10000;
+
+const MAX_LOAN = 1500000;
+
+const STARTING_LOAN_LIMIT = 1500000;
+
+
+/* ==========================================
+   ELEMENTS
+========================================== */
+
+const loanAmount =
+document.getElementById("loanAmount");
+
+const repaymentPeriod =
+document.getElementById("repaymentPeriod");
+
+const loanPurpose =
+document.getElementById("loanPurpose");
+
+const loanBtn =
+document.getElementById("loanBtn");
+
+const showAmount =
+document.getElementById("showAmount");
+
+const showPeriod =
+document.getElementById("showPeriod");
+
+const showBalance =
+document.getElementById("showBalance");
+
+const availableLoan =
+document.getElementById("availableLoan");
+
+const usedLoan =
+document.getElementById("usedLoan");
+
+const loanProgress =
+document.getElementById("loanProgress");
+
+const historyContainer =
+document.getElementById("historyContainer");
+
+
+/* ==========================================
+   VARIABLES
+========================================== */
+
+let currentUser = null;
+
+let currentBalance = 0;
+
+let currentAvailableLoan =
+STARTING_LOAN_LIMIT;
+
+
+/* ==========================================
+   MONEY FORMAT
+========================================== */
+
+function money(value){
+
+return Number(value || 0)
+.toLocaleString("en-US") + " RWF";
+
+}
+
+
+/* ==========================================
+   POPUP
+========================================== */
+
+window.showPopup = function(
+type,
+title,
+message
+){
+
+const overlay =
+document.getElementById("popupOverlay");
+
+const box =
+document.getElementById("popupBox");
+
+const icon =
+document.getElementById("popupIcon");
+
+const popupTitle =
+document.getElementById("popupTitle");
+
+const popupMessage =
+document.getElementById("popupMessage");
+
+
+box.className =
+"popup " + type;
+
+
+popupTitle.textContent =
+title;
+
+popupMessage.textContent =
+message;
+
+
+if(type === "success"){
+
+icon.innerHTML =
+'<i class="fa-solid fa-check"></i>';
+
+}
+
+else if(type === "error"){
+
+icon.innerHTML =
+'<i class="fa-solid fa-xmark"></i>';
+
+}
+
+else{
+
+icon.innerHTML =
+'<i class="fa-solid fa-triangle-exclamation"></i>';
+
+}
+
+
+overlay.classList.add("show");
+
+};
+
+
+/* ==========================================
+   CLOSE POPUP
+========================================== */
+
+window.closePopup = function(){
+
+document
+.getElementById("popupOverlay")
+.classList.remove("show");
+
+};
+
+
+/* ==========================================
+   AVAILABLE LOAN DISPLAY
+========================================== */
+
+function updateLoanDisplay(){
+
+const available =
+Math.max(
+0,
+Number(currentAvailableLoan || 0)
+);
+
+
+const used =
+Math.max(
+0,
+STARTING_LOAN_LIMIT - available
+);
+
+
+availableLoan.textContent =
+money(available);
+
+
+usedLoan.textContent =
+"Yakoreshejwe: " + money(used);
+
+
+const percentage =
+Math.max(
+0,
+Math.min(
+100,
+(available / STARTING_LOAN_LIMIT) * 100
+)
+);
+
+
+loanProgress.style.width =
+percentage + "%";
+
+}
+
+
+/* ==========================================
+   UPDATE SUMMARY
+========================================== */
+
+function updateSummary(){
+
+const amount =
+Number(
+loanAmount.value || 0
+);
+
+
+showAmount.textContent =
+money(amount);
+
+
+if(repaymentPeriod.value){
+
+showPeriod.textContent =
+repaymentPeriod.value + " days";
+
+}
+else{
+
+showPeriod.textContent =
+"-";
+
+}
+
+
+if(
+amount >= MIN_LOAN &&
+amount <= currentAvailableLoan
+){
+
+showBalance.textContent =
+money(currentBalance + amount);
+
+}
+else{
+
+showBalance.textContent =
+"-";
+
+}
+
+}
+
+
+/* ==========================================
+   QUICK AMOUNTS
+========================================== */
+
+document
+.querySelectorAll(".quick-btn")
+.forEach(button => {
+
+button.addEventListener(
+"click",
+function(){
+
+const amount =
+Number(
+this.dataset.amount
+);
+
+
+if(
+amount > currentAvailableLoan
+){
+
+showPopup(
+"warning",
+"Inguzanyo Ntihagije",
+"Inguzanyo usigaje ni " +
+money(currentAvailableLoan) +
+"."
+);
+
+return;
+
+}
+
+
+loanAmount.value =
+amount;
+
+updateSummary();
+
+});
+
+});
+
+
+/* ==========================================
+   INPUT EVENTS
+========================================== */
+
+loanAmount.addEventListener(
+"input",
+updateSummary
+);
+
+
+repaymentPeriod.addEventListener(
+"change",
+updateSummary
+);
+
+
+/* ==========================================
+   AUTH
+========================================== */
+
+onAuthStateChanged(
+auth,
+user => {
+
+if(!user){
+
+currentUser = null;
+
+loanBtn.disabled = true;
+
+showPopup(
+"error",
+"Login Required",
+"Please log in to your PV Africa account before applying for a loan."
+);
+
+return;
+
+}
+
+
+currentUser = user;
+
+loanBtn.disabled = false;
+
+loadUserData(user.uid);
+
+loadLoanHistory(user.uid);
+
+});
+
+
+/* ==========================================
+   LOAD USER DATA
+========================================== */
+
+function loadUserData(uid){
+
+const userRef =
+ref(
+db,
+"users/" + uid
+);
+
+
+onValue(
+userRef,
+snapshot => {
+
+if(!snapshot.exists()){
+
+currentBalance = 0;
+
+currentAvailableLoan =
+STARTING_LOAN_LIMIT;
+
+updateLoanDisplay();
+
+updateSummary();
+
+return;
+
+}
+
+
+const data =
+snapshot.val() || {};
+
+
+/*
+USER BALANCE
+
+Use the same balance field used
+by your dashboard/withdraw page.
+*/
+
+currentBalance =
+Number(
+data.balance ??
+data.availableBalance ??
+data.walletBalance ??
+0
+);
+
+
+/*
+AVAILABLE LOAN
+
+A new user starts with
+1,500,000 RWF.
+*/
+
+currentAvailableLoan =
+Number(
+data.availableLoan ??
+STARTING_LOAN_LIMIT
+);
+
+
+/*
+Never allow display below zero.
+*/
+
+if(
+currentAvailableLoan < 0
+){
+
+currentAvailableLoan = 0;
+
+}
+
+
+updateLoanDisplay();
+
+updateSummary();
+
+});
+
+}
+
+
+/* ==========================================
+   REQUEST LOAN
+========================================== */
+
+loanBtn.addEventListener(
+"click",
+async function(){
+
+if(!currentUser){
+
+showPopup(
+"error",
+"Login Required",
+"Please log in first."
+);
+
+return;
+
+}
+
+
+const amount =
+Number(
+loanAmount.value || 0
+);
+
+
+const period =
+Number(
+repaymentPeriod.value || 0
+);
+
+
+const purpose =
+loanPurpose.value.trim();
+
+
+/* ======================================
+   VALIDATION
+====================================== */
+
+if(
+!Number.isFinite(amount) ||
+amount < MIN_LOAN
+){
+
+showPopup(
+"warning",
+"Inguzanyo ntoya",
+"Inguzanyo usabye iri munsi ya 10,000 RWF."
+);
+
+return;
+
+}
+
+
+if(
+amount > MAX_LOAN
+){
+
+showPopup(
+"warning",
+"Inguzanyo nini",
+"Inguzanyo watse irihejuru ya 1,500,000 RWF."
+);
+
+return;
+
+}
+
+
+if(
+amount > currentAvailableLoan
+){
+
+showPopup(
+"error",
+"Loan Limit Exceeded",
+"You only have " +
+money(currentAvailableLoan) +
+" available for borrowing."
+);
+
+return;
+
+}
+
+
+if(!period){
+
+showPopup(
+"warning",
+"Hitamo uko uzajya wishyura",
+"Hitamo amezi cyangwa iminsi uzajya wishyuramo."
+);
+
+return;
+
+}
+
+
+if(!purpose){
+
+showPopup(
+"warning",
+"Impamvu y'inguzanyo",
+"Andika impamvu y'inguzany"
+);
+
+return;
+
+}
+
+
+/*
+Prevent double submission.
+*/
+
+loanBtn.disabled = true;
+
+loanBtn.innerHTML =
+'<span class="loader"></span>Processing...';
+
+
+try{
+
+const uid =
+currentUser.uid;
+
+
+/* ======================================
+   USER TRANSACTION
+====================================== */
+
+const userRef =
+ref(
+db,
+"users/" + uid
+);
+
+
+const transactionResult =
+await runTransaction(
+userRef,
+currentData => {
+
+if(!currentData){
+
+return;
+
+}
+
+
+const user = {
+...currentData
+};
+
+
+/*
+Get the latest values directly
+from Firebase.
+*/
+
+const balance =
+Number(
+user.balance ??
+user.availableBalance ??
+user.walletBalance ??
+0
+);
+
+
+const available =
+Number(
+user.availableLoan ??
+STARTING_LOAN_LIMIT
+);
+
+
+/*
+Final security checks.
+*/
+
+if(
+amount < MIN_LOAN
+){
+
+return;
+
+}
+
+
+if(
+amount > MAX_LOAN
+){
+
+return;
+
+}
+
+
+if(
+amount > available
+){
+
+return;
+
+}
+
+
+/*
+========================================
+CREDIT LOAN TO USER BALANCE
+========================================
+*/
+
+user.balance =
+balance + amount;
+
+
+/*
+========================================
+DEDUCT FROM AVAILABLE LOAN
+========================================
+*/
+
+user.availableLoan =
+available - amount;
+
+
+/*
+========================================
+TOTAL BORROWED
+========================================
+*/
+
+user.totalLoanBorrowed =
+Number(
+user.totalLoanBorrowed || 0
+) + amount;
+
+
+/*
+========================================
+ACTIVE LOAN
+========================================
+*/
+
+user.activeLoanAmount =
+Number(
+user.activeLoanAmount || 0
+) + amount;
+
+
+/*
+Return updated user.
+*/
+
+return user;
+
+});
+
+
+/*
+Transaction failed.
+*/
+
+if(
+!transactionResult.committed
+){
+
+throw new Error(
+"Loan transaction failed."
+);
+
+}
+
+
+/* ======================================
+   CREATE LOAN RECORD
+====================================== */
+
+const loanRef =
+push(
+ref(
+db,
+"loans/" + uid
+)
+);
+
+
+const loanData = {
+
+loanId:
+loanRef.key,
+
+userId:
+uid,
+
+amount:
+amount,
+
+repaymentPeriod:
+period,
+
+purpose:
+purpose,
+
+status:
+"active",
+
+createdAt:
+Date.now(),
+
+updatedAt:
+Date.now()
+
+};
+
+
+await set(
+loanRef,
+loanData
+);
+
+
+/* ======================================
+   CLEAR FORM
+====================================== */
+
+loanAmount.value = "";
+
+repaymentPeriod.value = "";
+
+loanPurpose.value = "";
+
+
+/* ======================================
+   REFRESH UI
+====================================== */
+
+updateSummary();
+
+loadUserData(uid);
+
+loadLoanHistory(uid);
+
+
+/* ======================================
+   SUCCESS
+====================================== */
+
+showPopup(
+"success",
+"Inguzanyo Yemewe",
+money(amount) +
+" yongewe kuri balance ya konti yawe. Inguzanyo usigaje ni " +
+money(
+Math.max(
+0,
+currentAvailableLoan - amount
+)
+) +
+"."
+);
+
+}
+catch(error){
+
+console.error(
+"Loan error:",
+error
+);
+
+
+showPopup(
+"error",
+"Ntibyakunze",
+"Habaye ikibazo mu gutanga inguzanyo. Gerageza nanone."
+);
+
+}
+
+
+/*
+Enable button again.
+*/
+
+loanBtn.disabled = false;
+
+loanBtn.innerHTML =
+'<i class="fa-solid fa-hand-holding-dollar"></i> Saba Inguzanyo';
+
+});
+
+
+/* ==========================================
+   LOAD LOAN HISTORY
+========================================== */
+
+function loadLoanHistory(uid){
+
+const loansRef =
+ref(
+db,
+"loans/" + uid
+);
+
+
+onValue(
+loansRef,
+snapshot => {
+
+if(!snapshot.exists()){
+
+showEmptyHistory();
+
+return;
+
+}
+
+
+const loans =
+snapshot.val() || {};
+
+
+const list =
+Object.values(loans)
+.filter(
+loan => loan
+)
+.sort(
+(a,b) =>
+Number(b.createdAt || 0)
+-
+Number(a.createdAt || 0)
+);
+
+
+if(list.length === 0){
+
+showEmptyHistory();
+
+return;
+
+}
+
+
+historyContainer.innerHTML = "";
+
+
+list.forEach(
+loan => {
+
+const status =
+String(
+loan.status || "active"
+).toLowerCase();
+
+
+let icon =
+"fa-circle-check";
+
+let statusText =
+"Active";
+
+let statusClass =
+"active";
+
+
+if(
+status === "repaid"
+){
+
+icon =
+"fa-check-double";
+
+statusText =
+"Repaid";
+
+statusClass =
+"repaid";
+
+}
+
+
+else if(
+status === "cancelled"
+){
+
+icon =
+"fa-circle-xmark";
+
+statusText =
+"Cancelled";
+
+statusClass =
+"cancelled";
+
+}
+
+
+const date =
+loan.createdAt
+?
+new Date(
+loan.createdAt
+).toLocaleDateString(
+"en-GB"
+)
+:
+"-";
+
+
+const item =
+document.createElement(
+"div"
+);
+
+
+item.className =
+"history-item";
+
+
+item.innerHTML = `
+
+<div class="left">
+
+<div class="history-icon ${statusClass}">
+
+<i class="fa-solid ${icon}"></i>
+
+</div>
+
+<div>
+
+<h4>
+${money(loan.amount)}
+</h4>
+
+<p>
+${loan.repaymentPeriod || "-"} days
+</p>
+
+<p class="${statusClass}-text">
+${statusText}
+</p>
+
+</div>
+
+</div>
+
+<div class="right">
+
+${date}
+
+</div>
+
+`;
+
+
+historyContainer.appendChild(
+item
+);
+
+
+const hr =
+document.createElement(
+"hr"
+);
+
+
+historyContainer.appendChild(
+hr
+);
+
+});
+
+});
+
+}
+
+
+/* ==========================================
+   EMPTY HISTORY
+========================================== */
+
+function showEmptyHistory(){
+
+historyContainer.innerHTML = `
+
+<div class="empty-history">
+
+<i class="fa-solid fa-file-invoice-dollar"></i>
+
+<p>
+Nta nguzanyo urasaba.
+</p>
+
+</div>
+
+`;
+
+}
+
+</script>
+
+</body>
+</html>
